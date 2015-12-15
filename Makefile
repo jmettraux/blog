@@ -1,4 +1,9 @@
 
+posts:
+	bundle exec ruby lib/render_posts.rb
+
 new:
-	touch entry-`date +"%Y%m%d"`.md
+	touch posts/`date +"%Y%m%d"`.md
+
+.PHONY: posts
 
