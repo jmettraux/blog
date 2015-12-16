@@ -47,6 +47,9 @@ module Blog
     vars = m ? YAML.load(m[1]) : {}
     content = m ? m[2].strip : content
 
+    m = content.match(/\A## ([^\n]+)/)
+
+    vars['title'] = m ? m[1] : ''
     vars['id'] = File.basename(path, '.md')
 
     [ vars, content ]
