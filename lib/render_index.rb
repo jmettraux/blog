@@ -29,29 +29,31 @@ require 'blog'
 rd_options = {}
 md_extensions = {}
 
-layout = File.read('layout-index.html')
-
 rd = Redcarpet::Render::HTML.new(rd_options)
 md = Redcarpet::Markdown.new(rd, md_extensions)
 
+layout = File.read('layout-index-post.html')
+
+posts =
+  Dir['posts/*.md'].collect do |path|
+
+    print " #{path}"
+
+    vars, content = Blog.extract_vars(File.read(path))
+    content = content.split("\n")[0, 3].join("\n") + "\n&hellip;"
+    vars['id'] = File.basename(path, '.md')
+    vars['CONTENT'] = md.render(content.substitute(vars))
+
+    layout.substitute(vars)
+  end
+
 vars = {}
-posts = []
-
-Dir['posts/*.md'].each do |path|
-
-  print " #{path}"
-
-  vars, content = Blog.extract_vars(File.read(path))
-  content = content.strip[0, 140]
-  posts << md.render(content.substitute(vars))
-end
-
 vars['CONTENT'] = posts.join("\n")
+
+layout = File.read('layout-index.html')
 content = layout.substitute(vars)
 
-File.open('out/index.html', 'wb') do |f|
-  f.print(content)
-end
+File.open('out/index.html', 'wb') { |f| f.print(content) }
 
 puts "\n. wrote out/index.html"
 

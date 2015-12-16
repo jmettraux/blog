@@ -55,20 +55,23 @@ p {
   margin-bottom: 1em;
 }
 
-.all-post {
+.index-post {
   margin-bottom: 0.4em;
 }
-.all-post > * {
+.index-post > * {
   display: inline-block;
   margin: 0;
 }
-.all-post h2.id {
+.index-post h2.id {
   font-weight: normal;
 }
-.all-post h2 {
+.index-post h2 {
   margin-right: 0.35em;
 }
-.all-post .links {
+.index-post .links {
   margin: 0;
+}
+
+.all-post {
 }
 
