@@ -32,17 +32,41 @@ class String
   def substitute(vars)
 
     self.gsub(/\$\{[^\}]+\}/) do |dollar|
+
       d = dollar[2..-2]
-      Blog.var_lookup(vars, d.split('.')) || (vars.instance_eval(d) rescue '')
+
+      (vars.instance_eval('self.' + d) rescue nil) ||
+      (vars.instance_eval(d) rescue nil) ||
+      ''
     end
   end
 end
 
 class Hash
 
-  def partial(path)
+  def partial(path) # helper
 
     File.read(File.join('partials/', path)).substitute(self)
+  end
+
+  def method_missing(key, *args, &block)
+
+    return super if args.any? || block
+
+    self[key.to_s]
+  end
+end
+
+class Array
+
+  def method_missing(key, *args, &block)
+
+    return super if args.any? || block
+
+    i = key.to_s.to_i
+    return super if i.to_s != key.to_s
+
+    self[i]
   end
 end
 
@@ -79,18 +103,6 @@ module Blog
 
     (YAML.load(File.read('blog.yaml')) rescue {})
       .merge(o.is_a?(Hash) ? o : YAML.load(o))
-  end
-
-  def self.var_lookup(start, keys)
-
-    k = keys.shift
-
-    return start unless k
-    var_lookup(start.is_a?(Array) ? start[k.to_i] : start[k], keys)
-
-  rescue
-
-    nil
   end
 end
 

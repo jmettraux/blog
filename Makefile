@@ -18,3 +18,6 @@ new:
 publish:
 	rsync -av out/ ~/Dropbox/Public/blog
 
+
+.PHONY: posts
+
