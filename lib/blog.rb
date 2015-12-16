@@ -39,12 +39,17 @@ end
 
 module Blog
 
-  def self.extract_vars(content)
+  def self.load_post(path)
 
-    content = content.strip
+    content = File.read(path).strip
     m = content.match(/\A---\n(.*)\n---\n(.*)\z/m)
 
-    m ? [ YAML.load(m[1]), m[2].strip ] : [ {}, content ]
+    vars = m ? YAML.load(m[1]) : {}
+    content = m ? m[2].strip : content
+
+    vars['id'] = File.basename(path, '.md')
+
+    [ vars, content ]
   end
 
   def self.var_lookup(start, keys)

@@ -41,7 +41,7 @@ Dir['posts/*.md'].each do |path|
 
   File.open(fn, 'wb') { |f|
 
-    vars, content = Blog.extract_vars(File.read(path))
+    vars, content = Blog.load_post(path)
 
     vars['CONTENT'] = md.render(content.substitute(vars))
     content = layout.substitute(vars)

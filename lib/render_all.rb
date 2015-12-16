@@ -39,8 +39,7 @@ posts =
 
     print " #{path}"
 
-    vars, content = Blog.extract_vars(File.read(path))
-    vars['id'] = File.basename(path, '.md')
+    vars, content = Blog.load_post(path)
     vars['CONTENT'] = md.render(content.substitute(vars))
 
     layout.substitute(vars)
