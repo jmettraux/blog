@@ -23,14 +23,8 @@
 # Made in Japan.
 #++
 
-require 'redcarpet'
 require 'blog'
 
-rd_options = {}
-md_extensions = {}
-
-rd = Redcarpet::Render::HTML.new(rd_options)
-md = Redcarpet::Markdown.new(rd, md_extensions)
 
 layout = File.read('layouts/index-post.html')
 
@@ -41,7 +35,7 @@ posts =
 
     vars, content = Blog.load_post(path)
     content = content.split("\n")[0, 3].join("\n") + "\n&hellip;"
-    vars['CONTENT'] = md.render(content.substitute(vars))
+    vars['CONTENT'] = Blog.md_render(content.substitute(vars))
 
     layout.substitute(vars)
   end

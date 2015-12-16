@@ -24,6 +24,7 @@
 #++
 
 require 'yaml'
+require 'redcarpet'
 
 
 class String
@@ -38,6 +39,17 @@ class String
 end
 
 module Blog
+
+  rd_options = {}
+  md_extensions = {}
+
+  rd = Redcarpet::Render::HTML.new(rd_options)
+  @md = Redcarpet::Markdown.new(rd, md_extensions)
+
+  def self.md_render(s)
+
+    @md.render(s)
+  end
 
   def self.load_post(path)
 
