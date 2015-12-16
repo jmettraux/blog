@@ -5,5 +5,8 @@ posts:
 new:
 	touch posts/`date +"%Y%m%d"`.md
 
-.PHONY: posts
+publish:
+	rsync -av out/ ~/Dropbox/Public/blog
+
+.PHONY: posts publish
 
