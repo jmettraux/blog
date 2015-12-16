@@ -23,19 +23,57 @@
 # Made in Japan.
 #++
 
+require 'yaml'
 require 'redcarpet'
 
 rd_options = {}
 md_extensions = {}
 
+layout = File.read('layout.html')
+
 rd = Redcarpet::Render::HTML.new(rd_options)
 md = Redcarpet::Markdown.new(rd, md_extensions)
+
+def extract_vars(content)
+
+  content = content.strip
+  m = content.match(/\A---\n(.*)\n---\n(.*)\z/m)
+
+  m ? [ m[1], m[2] ] : [ '', content ]
+end
+
+def lookup(start, keys)
+
+  k = keys.shift
+
+  return start if k == nil
+  lookup(start.is_a?(Array) ? start[k.to_i] : start[k], keys) rescue nil
+end
+
+class String
+
+  def substitute(vars)
+
+    self.gsub(/\$\{[^\}]+\}/) do |dollar|
+      d = dollar[2..-2]
+      lookup(vars, d.split('.')) || (Kernel.eval(d) rescue '')
+    end
+  end
+end
 
 Dir['posts/*.md'].each do |path|
 
   fn = 'out/' + File.basename(path, '.md') + '.html'
 
-  File.open(fn, 'wb') { |f| f.print(md.render(File.read(path))) }
+  File.open(fn, 'wb') { |f|
+
+    vars, content = extract_vars(File.read(path))
+
+    vars = YAML.load(vars)
+    vars['CONTENT'] = content.substitute(vars)
+
+    f.print(layout.substitute(vars))
+  }
 
   puts ". wrote #{fn}"
 end
