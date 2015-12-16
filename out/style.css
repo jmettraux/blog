@@ -54,7 +54,21 @@ h2 {
 p {
   margin-bottom: 1em;
 }
-a.important {
-  font-weight: bold;
+
+.all-post {
+  margin-bottom: 0.4em;
+}
+.all-post > * {
+  display: inline-block;
+  margin: 0;
+}
+.all-post h2.id {
+  font-weight: normal;
+}
+.all-post h2 {
+  margin-right: 0.35em;
+}
+.all-post .links {
+  margin: 0;
 }
 

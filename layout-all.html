@@ -18,7 +18,8 @@
 
 <script type="text/javascript">
 
-  if (location.hostname != 'localhost' && location.hostname != '127.0.0.1') {
+  var h = location.hostname;
+  if (h !== '' && h !== 'localhost' && h !== '127.0.0.1') {
 
     // gauges
 

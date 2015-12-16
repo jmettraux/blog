@@ -29,23 +29,27 @@ require 'blog'
 rd_options = {}
 md_extensions = {}
 
-layout = File.read('layout-all.html')
-
 rd = Redcarpet::Render::HTML.new(rd_options)
 md = Redcarpet::Markdown.new(rd, md_extensions)
 
+layout = File.read('layout-all-post.html')
+
+posts =
+  Dir['posts/*.md'].collect do |path|
+
+    print " #{path}"
+
+    vars, content = Blog.extract_vars(File.read(path))
+    vars['id'] = File.basename(path, '.md')
+    vars['CONTENT'] = md.render(content.substitute(vars))
+
+    layout.substitute(vars)
+  end
+
 vars = {}
-posts = []
-
-Dir['posts/*.md'].each do |path|
-
-  print " #{path}"
-
-  vars, content = Blog.extract_vars(File.read(path))
-  posts << md.render(content.substitute(vars))
-end
-
 vars['CONTENT'] = posts.join("\n")
+
+layout = File.read('layout-all.html')
 content = layout.substitute(vars)
 
 File.open('out/all.html', 'wb') { |f| f.print(content) }
