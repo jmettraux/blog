@@ -1,4 +1,8 @@
 
+render: all posts
+
+all:
+	bundle exec ruby -Ilib lib/render_all.rb
 posts:
 	bundle exec ruby -Ilib lib/render_posts.rb
 
