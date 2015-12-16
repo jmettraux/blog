@@ -1,6 +1,6 @@
 
 posts:
-	bundle exec ruby lib/render_posts.rb
+	bundle exec ruby -Ilib lib/render_posts.rb
 
 new:
 	touch posts/`date +"%Y%m%d"`.md
