@@ -32,7 +32,7 @@ md_extensions = {}
 rd = Redcarpet::Render::HTML.new(rd_options)
 md = Redcarpet::Markdown.new(rd, md_extensions)
 
-layout = File.read('layout-index-post.html')
+layout = File.read('layouts/index-post.html')
 
 posts =
   Dir['posts/*.md'].collect do |path|
@@ -49,7 +49,7 @@ posts =
 vars = {}
 vars['CONTENT'] = posts.join("\n")
 
-layout = File.read('layout-index.html')
+layout = File.read('layouts/index.html')
 content = layout.substitute(vars)
 
 File.open('out/index.html', 'wb') { |f| f.print(content) }
