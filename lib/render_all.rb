@@ -23,34 +23,32 @@
 # Made in Japan.
 #++
 
-require 'yaml'
 require 'redcarpet'
 require 'blog'
 
 rd_options = {}
 md_extensions = {}
 
-layout = File.read('layout.html')
+layout = File.read('layout-all.html')
 
 rd = Redcarpet::Render::HTML.new(rd_options)
 md = Redcarpet::Markdown.new(rd, md_extensions)
 
+vars = {}
+posts = []
 
 Dir['posts/*.md'].each do |path|
 
-#  fn = 'out/' + File.basename(path, '.md') + '.html'
-#
-#  File.open(fn, 'wb') { |f|
-#
-#    vars, content = Blog.extract_vars(File.read(path))
-#
-#    vars = YAML.load(vars)
-#    vars['CONTENT'] = md.render(content.substitute(vars))
-#    content = layout.substitute(vars)
-#
-#    f.print(content)
-#  }
-#
-#  puts ". wrote #{fn}"
+  print " #{path}"
+
+  vars, content = Blog.extract_vars(File.read(path))
+  posts << md.render(content.substitute(vars))
 end
+
+vars['CONTENT'] = posts.join("\n")
+content = layout.substitute(vars)
+
+File.open('out/all.html', 'wb') { |f| f.print(content) }
+
+puts "\n. wrote out/all.html"
 

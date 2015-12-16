@@ -23,7 +23,6 @@
 # Made in Japan.
 #++
 
-require 'yaml'
 require 'redcarpet'
 require 'blog'
 
@@ -44,7 +43,6 @@ Dir['posts/*.md'].each do |path|
 
     vars, content = Blog.extract_vars(File.read(path))
 
-    vars = YAML.load(vars)
     vars['CONTENT'] = md.render(content.substitute(vars))
     content = layout.substitute(vars)
 

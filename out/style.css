@@ -54,4 +54,7 @@ h2 {
 p {
   margin-bottom: 1em;
 }
+a.important {
+  font-weight: bold;
+}
 

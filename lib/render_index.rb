@@ -23,39 +23,35 @@
 # Made in Japan.
 #++
 
-require 'yaml'
+require 'redcarpet'
+require 'blog'
 
+rd_options = {}
+md_extensions = {}
 
-class String
+layout = File.read('layout-index.html')
 
-  def substitute(vars)
+rd = Redcarpet::Render::HTML.new(rd_options)
+md = Redcarpet::Markdown.new(rd, md_extensions)
 
-    self.gsub(/\$\{[^\}]+\}/) do |dollar|
-      d = dollar[2..-2]
-      Blog.var_lookup(vars, d.split('.')) || (Kernel.eval(d) rescue '')
-    end
-  end
+vars = {}
+posts = []
+
+Dir['posts/*.md'].each do |path|
+
+  print " #{path}"
+
+  vars, content = Blog.extract_vars(File.read(path))
+  content = content.strip[0, 140]
+  posts << md.render(content.substitute(vars))
 end
 
-module Blog
+vars['CONTENT'] = posts.join("\n")
+content = layout.substitute(vars)
 
-  def self.extract_vars(content)
-
-    content = content.strip
-    m = content.match(/\A---\n(.*)\n---\n(.*)\z/m)
-
-    m ? [ YAML.load(m[1]), m[2] ] : [ {}, content ]
-  end
-
-  def self.var_lookup(start, keys)
-
-    k = keys.shift
-
-    return start unless k
-    return start[k.to_i] if start.is_a?(Array)
-    start[k]
-  rescue
-    nil
-  end
+File.open('out/index.html', 'wb') do |f|
+  f.print(content)
 end
+
+puts "\n. wrote out/index.html"
 
