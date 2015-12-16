@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>John Mettraux</title>
+ <link href="https://dl.dropboxusercontent.com/u/76595/blog/atom.xml" rel="self" />
+ <link href="https://dl.dropboxusercontent.com/u/76595/blog/" />
+ <link href="https://lambda.io/jmettraux/"/>
+ <updated>${Time.now.strftime('%FT%T%:z')}</updated>
+ <id>http://lambda.io/jmettraux/</id>
+ <author>
+   <name>John Mettraux</name>
+   <email>jmettraux@gmail.com</email>
+ </author>
+
+ ${CONTENT}
+</feed>
+

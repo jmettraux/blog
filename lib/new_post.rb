@@ -23,54 +23,20 @@
 # Made in Japan.
 #++
 
-require 'yaml'
+n = Time.now
+fn = "posts/#{n.strftime('%Y%m%d')}.md"
 
+File.open(fn, 'ab') do |f|
+  f.print(%{
+---
+date: '#{n.strftime('%FT%T%:z')}'
+---
 
-class String
+## title
 
-  def substitute(vars)
-
-    self.gsub(/\$\{[^\}]+\}/) do |dollar|
-      d = dollar[2..-2]
-      Blog.var_lookup(vars, d.split('.')) || (Kernel.eval(d) rescue '')
-    end
-  end
+Blah blah blah
+  }.strip)
 end
 
-module Blog
-
-  def self.load_post(path)
-
-    content = File.read(path).strip
-    m = content.match(/\A---\n(.*)\n---\n(.*)\z/m)
-
-    vars = merge_vars(m ? m[1] : {})
-    content = m ? m[2].strip : content
-
-    m = content.match(/\A## ([^\n]+)/)
-
-    vars['title'] ||= m ? m[1] : ''
-    vars['id'] = File.basename(path, '.md')
-
-    [ vars, content ]
-  end
-
-  def self.merge_vars(o)
-
-    (YAML.load(File.read('blog.yaml')) rescue {})
-      .merge(o.is_a?(Hash) ? o : YAML.load(o))
-  end
-
-  def self.var_lookup(start, keys)
-
-    k = keys.shift
-
-    return start unless k
-    var_lookup(start.is_a?(Array) ? start[k.to_i] : start[k], keys)
-
-  rescue
-
-    nil
-  end
-end
+puts ". prepared #{fn}"
 

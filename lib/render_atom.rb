@@ -23,54 +23,30 @@
 # Made in Japan.
 #++
 
-require 'yaml'
+require 'redcarpet'
+require 'blog'
 
 
-class String
+layout = File.read('layouts/atom-post.xml')
 
-  def substitute(vars)
+posts =
+  Dir['posts/*.md'].collect do |path|
 
-    self.gsub(/\$\{[^\}]+\}/) do |dollar|
-      d = dollar[2..-2]
-      Blog.var_lookup(vars, d.split('.')) || (Kernel.eval(d) rescue '')
-    end
-  end
-end
+    print " #{path}"
 
-module Blog
+    vars, content = Blog.load_post(path)
+    vars['CONTENT'] = content.substitute(vars)
 
-  def self.load_post(path)
-
-    content = File.read(path).strip
-    m = content.match(/\A---\n(.*)\n---\n(.*)\z/m)
-
-    vars = merge_vars(m ? m[1] : {})
-    content = m ? m[2].strip : content
-
-    m = content.match(/\A## ([^\n]+)/)
-
-    vars['title'] ||= m ? m[1] : ''
-    vars['id'] = File.basename(path, '.md')
-
-    [ vars, content ]
+    layout.substitute(vars)
   end
 
-  def self.merge_vars(o)
+vars = Blog.merge_vars({})
+vars['CONTENT'] = posts.join("\n")
 
-    (YAML.load(File.read('blog.yaml')) rescue {})
-      .merge(o.is_a?(Hash) ? o : YAML.load(o))
-  end
+layout = File.read('layouts/atom.xml')
+content = layout.substitute(vars)
 
-  def self.var_lookup(start, keys)
+File.open('out/atom.xml', 'wb') { |f| f.print(content) }
 
-    k = keys.shift
-
-    return start unless k
-    var_lookup(start.is_a?(Array) ? start[k.to_i] : start[k], keys)
-
-  rescue
-
-    nil
-  end
-end
+puts "\n. wrote out/atom.xml"
 

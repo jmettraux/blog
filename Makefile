@@ -1,5 +1,5 @@
 
-render: index all posts
+render: index all posts atom
 
 rp: render publish
 
@@ -9,12 +9,12 @@ all:
 	bundle exec ruby -Ilib lib/render_all.rb
 posts:
 	bundle exec ruby -Ilib lib/render_posts.rb
+atom:
+	bundle exec ruby -Ilib lib/render_atom.rb
 
 new:
-	touch posts/`date +"%Y%m%d"`.md
+	bundle exec ruby -Ilib lib/new_post.rb
 
 publish:
 	rsync -av out/ ~/Dropbox/Public/blog
-
-.PHONY: posts publish
 
