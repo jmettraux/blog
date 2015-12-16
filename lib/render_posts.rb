@@ -29,7 +29,7 @@ require 'blog'
 rd_options = {}
 md_extensions = {}
 
-layout = File.read('layout.html')
+layout = File.read('layout-post.html')
 
 rd = Redcarpet::Render::HTML.new(rd_options)
 md = Redcarpet::Markdown.new(rd, md_extensions)
