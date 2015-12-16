@@ -45,7 +45,7 @@ posts =
     layout.substitute(vars)
   end
 
-vars = {}
+vars = Blog.merge_vars({})
 vars['CONTENT'] = posts.join("\n")
 
 layout = File.read('layouts/all.html')

@@ -44,7 +44,7 @@ module Blog
     content = File.read(path).strip
     m = content.match(/\A---\n(.*)\n---\n(.*)\z/m)
 
-    vars = m ? YAML.load(m[1]) : {}
+    vars = merge_vars(m ? m[1] : {})
     content = m ? m[2].strip : content
 
     m = content.match(/\A## ([^\n]+)/)
@@ -55,14 +55,21 @@ module Blog
     [ vars, content ]
   end
 
+  def self.merge_vars(o)
+
+    (YAML.load(File.read('blog.yaml')) rescue {})
+      .merge(o.is_a?(Hash) ? o : YAML.load(o))
+  end
+
   def self.var_lookup(start, keys)
 
     k = keys.shift
 
     return start unless k
-    return start[k.to_i] if start.is_a?(Array)
-    start[k]
+    var_lookup(start.is_a?(Array) ? start[k.to_i] : start[k], keys)
+
   rescue
+
     nil
   end
 end
