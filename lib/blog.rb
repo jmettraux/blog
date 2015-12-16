@@ -44,7 +44,7 @@ module Blog
     content = content.strip
     m = content.match(/\A---\n(.*)\n---\n(.*)\z/m)
 
-    m ? [ YAML.load(m[1]), m[2] ] : [ {}, content ]
+    m ? [ YAML.load(m[1]), m[2].strip ] : [ {}, content ]
   end
 
   def self.var_lookup(start, keys)

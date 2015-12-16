@@ -40,6 +40,7 @@ posts =
     print " #{path}"
 
     vars, content = Blog.extract_vars(File.read(path))
+    content = content.split("\n")[0, 3].join("\n") + "\n&hellip;"
     vars['id'] = File.basename(path, '.md')
     vars['CONTENT'] = md.render(content.substitute(vars))
 
