@@ -33,8 +33,16 @@ class String
 
     self.gsub(/\$\{[^\}]+\}/) do |dollar|
       d = dollar[2..-2]
-      Blog.var_lookup(vars, d.split('.')) || (Kernel.eval(d) rescue '')
+      Blog.var_lookup(vars, d.split('.')) || (vars.instance_eval(d) rescue '')
     end
+  end
+end
+
+class Hash
+
+  def partial(path)
+
+    File.read(File.join('partials/', path)).substitute(self)
   end
 end
 
