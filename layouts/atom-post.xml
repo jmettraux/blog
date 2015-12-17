@@ -1,9 +1,10 @@
 
- <entry>
-   <title>${title}</title>
-   <link href="https://dl.dropboxusercontent.com/u/76595/blog/${id}.html" />
-   <updated>${date}</updated>
-   <id>https://dl.dropboxusercontent.com/u/76595/blog/${id}.html</id>
-   <content type="text">${CONTENT}</content>
- </entry>
+<entry>
+<title>${title}</title>
+<link href="https://dl.dropboxusercontent.com/u/76595/blog/${id}.html" />
+<updated>${date}</updated>
+<id>https://dl.dropboxusercontent.com/u/76595/blog/${id}.html</id>
+<content type="text">${CONTENT}</content>
+${TAGS}
+</entry>
 

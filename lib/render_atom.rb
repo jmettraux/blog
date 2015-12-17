@@ -39,7 +39,16 @@ posts =
     vars, content = Blog.load_post(path)
     vars['CONTENT'] = Blog.md_render(content.substitute(vars), :text)
 
-    layout.substitute(vars)
+    # http://edward.oconnor.cx/2007/02/representing-tags-in-atom
+
+    vars['TAGS'] =
+      (vars['tags'] || []).collect { |t|
+        %{
+<category scheme="http://lambda.io/jmettraux/tags/" term="#{t}" />
+        }.strip
+      }.join("\n")
+
+    layout.substitute(vars).strip
   end
 
 vars = Blog.merge_vars({})

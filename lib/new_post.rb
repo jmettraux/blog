@@ -30,6 +30,7 @@ File.open(fn, 'ab') do |f|
   f.print(%{
 ---
 date: '#{n.strftime('%FT%T%:z')}'
+tags: [ 'en' ]
 ---
 
 ## title
