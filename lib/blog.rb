@@ -76,15 +76,18 @@ end
 
 module Blog
 
-  rd_options = {}
-  md_extensions = {}
+  @html_renderer =
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new({}),
+      {})
+  @text_renderer =
+    Redcarpet::Markdown.new(
+      Redcarpet::Render::StripDown.new(),
+      {})
 
-  rd = Redcarpet::Render::HTML.new(rd_options)
-  @md = Redcarpet::Markdown.new(rd, md_extensions)
+  def self.md_render(s, mode=:html)
 
-  def self.md_render(s)
-
-    @md.render(s)
+    (mode == :text ? @text_renderer : @html_renderer).render(s)
   end
 
   def self.load_post(path)

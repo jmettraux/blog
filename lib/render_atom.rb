@@ -24,6 +24,8 @@
 #++
 
 require 'redcarpet'
+require 'redcarpet/render_strip'
+
 require 'blog'
 
 
@@ -35,7 +37,7 @@ posts =
     print " #{path}"
 
     vars, content = Blog.load_post(path)
-    vars['CONTENT'] = content.substitute(vars)
+    vars['CONTENT'] = Blog.md_render(content.substitute(vars), :text)
 
     layout.substitute(vars)
   end
