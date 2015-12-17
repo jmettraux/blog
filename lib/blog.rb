@@ -35,8 +35,12 @@ class String
 
       d = dollar[2..-2]
 
-      (vars.instance_eval('self.' + d) rescue nil) ||
-      (vars.instance_eval(d) rescue nil) ||
+      r = (vars.instance_eval('self.' + d) rescue nil)
+      next r.to_s if r
+
+      r = (vars.instance_eval(d) rescue nil)
+      next r.to_s if r
+
       ''
     end
   end
