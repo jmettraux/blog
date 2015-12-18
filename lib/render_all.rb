@@ -26,7 +26,8 @@
 require 'blog'
 
 
-layout = File.read('layouts/all-post.html')
+post_layout = File.read('layouts/all-post.html')
+tag_layout = File.read('layouts/index-post-tag.html') # sic
 
 posts =
   Dir['posts/*.md'].collect do |path|
@@ -38,7 +39,12 @@ posts =
     content = content.split("\n", 2).last # remove title
     vars['CONTENT'] = Blog.md_render(content.substitute(vars))
 
-    layout.substitute(vars)
+    vars['TAGS'] =
+      (vars['tags'] || [])
+        .collect { |tag| tag_layout.substitute({ tag: tag }) }
+        .join(' ')
+
+    post_layout.substitute(vars)
   end
 
 vars = Blog.merge_vars({})

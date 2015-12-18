@@ -96,6 +96,11 @@ img.brand {
 .all-post h2.title {
   margin-top: 2.1em;
 }
+.all-post h2.title .tags {
+  font-weight: normal;
+  font-size: 70%;
+  margin-left: .4em;
+}
 .all-post span.id {
   font-weight: normal;
   font-size: 70%;
