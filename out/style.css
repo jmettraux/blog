@@ -35,6 +35,10 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 /* style.css proper */
 
+a:visited { color: black; }
+a:active { color: grey; }
+a:link { color: grey; }
+
 #content {
   font-family: Helvetica Neue;
   font-size: 14px;
@@ -56,6 +60,10 @@ p {
 }
 
 img.brand {
+  width: 56px;
+  height: 56px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   border-radius: 50%;
 }
 
@@ -78,6 +86,10 @@ img.brand {
   margin: 0;
 }
 
-.all-post {
+.post h2 {
+  margin-top: 1.4em;
+}
+.post .links {
+  margin-top: 2em;
 }
 

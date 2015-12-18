@@ -58,7 +58,7 @@ class Hash
 
     return super if args.any? || block
 
-    self[key.to_s]
+    self[key.to_s] || self[key]
   end
 end
 

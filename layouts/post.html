@@ -4,12 +4,15 @@
   <title>${blog.title} - ${title}</title>
   ${partial('head.html')}
 </head>
-<body>
-<div id="content" class="post">
+<body class="post">
+<div id="content">
 ${CONTENT}
+<div class="links">
+  <a href="index.html">index</a>
+  <a href="mailto:jmettraux+blog${id}@gmail.com">comments</a>
 </div>
-</body>
-
+</div>
 ${partial('gauges.html')}
+</body>
 </html>
 
