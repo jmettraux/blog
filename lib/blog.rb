@@ -25,6 +25,7 @@
 
 require 'yaml'
 require 'redcarpet'
+require 'redcarpet/render_strip'
 
 
 class String
