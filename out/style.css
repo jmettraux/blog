@@ -55,6 +55,10 @@ p {
   margin-bottom: 1em;
 }
 
+img.brand {
+  border-radius: 50%;
+}
+
 .index-post {
   margin-bottom: 0.4em;
 }
@@ -62,10 +66,12 @@ p {
   display: inline-block;
   margin: 0;
 }
-.index-post h2.id {
-  font-weight: normal;
+.index-post .id {
+  margin-right: 0.35em;
 }
 .index-post h2 {
+  font-size: 100%;
+  font-weight: bold;
   margin-right: 0.35em;
 }
 .index-post .links {
