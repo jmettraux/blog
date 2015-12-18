@@ -34,6 +34,8 @@ posts =
     print " #{path}"
 
     vars, content = Blog.load_post(path)
+
+    content = content.split("\n", 2).last # remove title
     vars['CONTENT'] = Blog.md_render(content.substitute(vars))
 
     layout.substitute(vars)
