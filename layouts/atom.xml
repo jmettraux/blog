@@ -4,8 +4,10 @@
 
 <title>${blog.title}</title>
 <link href="https://dl.dropboxusercontent.com/u/76595/blog/atom.xml" rel="self" />
+<!--
 <link href="https://dl.dropboxusercontent.com/u/76595/blog/" />
 <link href="https://lambda.io/jmettraux/"/>
+-->
 <updated>${Time.now.strftime('%FT%T%:z')}</updated>
 <id>http://lambda.io/jmettraux/</id>
 <author>
