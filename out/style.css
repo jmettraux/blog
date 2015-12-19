@@ -115,3 +115,10 @@ img.brand {
   margin-right: .4em;
 }
 
+body.post img.brand {
+  height: 24px;
+  width: 24px;
+  float: left;
+  margin-right: .4em;
+}
+
