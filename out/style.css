@@ -74,10 +74,13 @@ img.brand {
 
 .index-post {
   margin-bottom: 0.4em;
+  height: 1.1em;
+  overflow: hidden;
 }
 .index-post > * {
-  display: inline-block;
+  display: inline;
   margin: 0;
+  line-height: 1.1em;
 }
 .index-post .id {
   margin-right: 0.35em;
