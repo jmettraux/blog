@@ -1,0 +1,38 @@
+
+<script type="text/javascript">
+
+  // with help from http://youmightnotneedjquery.com/
+
+  function ready(fn) {
+    if (document.readyState != 'loading'){
+      fn();
+    } else if (document.addEventListener) {
+      document.addEventListener('DOMContentLoaded', fn);
+    } else {
+      document.attachEvent('onreadystatechange', function() {
+        if (document.readyState != 'loading') fn();
+      });
+    }
+  }
+
+  function forEach(sel, fun) {
+    var elts = document.querySelectorAll(sel);
+    for (var i = 0, l = elts.length; i < l; i++) fun(elts[i], i);
+  }
+
+  ready(function() {
+
+    var m = window.location.search.match(/^\?tags?=([^&]+)/);
+    if (m) {
+      forEach('a.all-tags', function(e) { e.style.display = 'initial'; });
+      forEach('div.post', function(e) { e.style.display = 'none'; });
+      var tags = m[1].split(',');
+      for (var i = 0, l = tags.length; i < l; i++) {
+        forEach('div.post.tag-' + tags[i], function(e) {
+          e.style.display = 'block';
+        });
+      }
+    }
+  });
+</script>
+

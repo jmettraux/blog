@@ -8,17 +8,19 @@
 <div id="content">
 
   <h1>
-    <img class="brand" src="images/edelweiss.jpg" />
+    <a href="all.html"><img class="brand" src="images/edelweiss.jpg" /></a>
     lambda.io/jmettraux
   </h1>
 
   <p>
     <a href="index.html">index</a>
+    <a style="display: none;" href="all.html" class="all-tags">all tags</a>
   </p>
 
   ${CONTENT}
 </div>
 
+${partial('filters.html')}
 ${partial('gauges.html')}
 </body>
 </html>
