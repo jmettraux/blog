@@ -103,6 +103,7 @@ module Blog
 
     vars['title'] ||= m ? m[1] : ''
     vars['id'] = File.basename(path, '.md')
+    vars['tags'] ||= []
 
     [ vars, content ]
   end

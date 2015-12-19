@@ -39,10 +39,9 @@ posts =
     content = content.split("\n", 2).last # remove title
     vars['CONTENT'] = Blog.md_render(content.substitute(vars))
 
-    vars['TAGS'] =
-      (vars['tags'] || [])
-        .collect { |tag| tag_layout.substitute({ tag: tag }) }
-        .join(' ')
+    vars['TAGS'] = vars['tags']
+      .collect { |tag| tag_layout.substitute({ tag: tag }) }
+      .join(' ')
 
     post_layout.substitute(vars)
   end

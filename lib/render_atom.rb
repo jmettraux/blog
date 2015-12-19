@@ -37,12 +37,15 @@ posts =
     print " #{path}"
 
     vars, content = Blog.load_post(path)
+
+    next if vars['tags'].include?('draft')
+
     vars['CONTENT'] = Blog.md_render(content.substitute(vars), :text)
 
     # http://edward.oconnor.cx/2007/02/representing-tags-in-atom
 
     vars['TAGS'] =
-      (vars['tags'] || []).collect { |t|
+      vars['tags'].collect { |t|
         %{
 <category scheme="http://lambda.io/jmettraux/tags/" term="#{t}" />
         }.strip
