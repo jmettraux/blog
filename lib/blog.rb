@@ -86,9 +86,17 @@ module Blog
       Redcarpet::Render::StripDown.new(),
       {})
 
-  def self.md_render(s, mode=:html)
+  def self.md_render(s, opts={})
 
-    (mode == :text ? @text_renderer : @html_renderer).render(s)
+    renderer = opts[:mode] == 'text' ? @text_renderer : @html_renderer
+
+    r = renderer.render(s)
+
+    if opts[:index] == true
+      r = r.gsub(/\s*<\/?blockquote>\s*/, '"')
+    end
+
+    r
   end
 
   def self.load_post(path)

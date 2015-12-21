@@ -38,7 +38,7 @@ posts =
 
     content = content.split("\n", 2).last # remove title
     content = content.split("\n")[1, 2].join("\n") + "\n&hellip;"
-    vars['CONTENT'] = Blog.md_render(content.substitute(vars))
+    vars['CONTENT'] = Blog.md_render(content.substitute(vars), index: true)
 
     vars['ctags'] = vars['tags']
       .collect { |tag| "tag-#{tag}" }
