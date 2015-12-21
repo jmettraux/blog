@@ -1,5 +1,5 @@
 
-render: index all posts atom
+render: index all posts copyright atom
 
 rp: render publish
 
@@ -9,6 +9,8 @@ all:
 	bundle exec ruby -Ilib lib/render_all.rb
 posts:
 	bundle exec ruby -Ilib lib/render_posts.rb
+copyright:
+	bundle exec ruby -Ilib lib/render_copyright.rb
 atom:
 	bundle exec ruby -Ilib lib/render_atom.rb
 
