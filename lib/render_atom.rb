@@ -40,7 +40,7 @@ posts =
 
     next if vars['tags'].include?('draft')
 
-    vars['CONTENT'] = Blog.md_render(content.substitute(vars), :text)
+    vars['CONTENT'] = Blog.md_render(content.substitute(vars))
 
     # http://edward.oconnor.cx/2007/02/representing-tags-in-atom
 

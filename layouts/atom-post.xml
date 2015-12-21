@@ -4,7 +4,11 @@
 <link href="https://dl.dropboxusercontent.com/u/76595/blog/${id}.html" />
 <updated>${date}</updated>
 <id>https://dl.dropboxusercontent.com/u/76595/blog/${id}.html</id>
-<content type="text">${CONTENT}</content>
+<content type="xhtml">
+<div xmlns="http://www.w3.org/1999/xhtml">
+${CONTENT}
+</div>
+</content>
 ${TAGS}
 </entry>
 
