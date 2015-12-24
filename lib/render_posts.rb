@@ -26,7 +26,8 @@
 require 'blog'
 
 
-layout = File.read('layouts/post.html')
+post_layout = File.read('layouts/post.html')
+tag_layout = File.read('layouts/post-tag.html')
 
 Dir['posts/*.md'].each do |path|
 
@@ -36,8 +37,14 @@ Dir['posts/*.md'].each do |path|
 
     vars, content = Blog.load_post(path)
 
-    vars['CONTENT'] = Blog.md_render(content.substitute(vars))
-    content = layout.substitute(vars)
+    vars['CONTENT'] =
+      Blog.md_render(content.substitute(vars))
+
+    vars['TAGS'] = vars['tags']
+      .collect { |tag| tag_layout.substitute({ tag: tag }) }
+      .join(' ')
+
+    content = post_layout.substitute(vars)
 
     f.print(content)
   }
