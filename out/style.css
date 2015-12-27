@@ -138,9 +138,13 @@ blockquote {
 blockquote:before {
   position: absolute;
   top: 21px;
+  left: 0px;
   color: #ccc;
   content: open-quote;
   font-size: 4em;
+}
+blockquote:after {
+  content: no-close-quote;
 }
 blockquote p {
   display: block;
