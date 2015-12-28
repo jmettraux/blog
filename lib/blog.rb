@@ -110,6 +110,7 @@ module Blog
     m = content.match(/\A## ([^\n]+)/)
 
     vars['title'] ||= m ? m[1] : ''
+    vars['_title'] = vars['title'].gsub(/[^a-zA-Z0-9]/, '_')
     vars['id'] = File.basename(path, '.md')
     vars['tags'] ||= []
 
