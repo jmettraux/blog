@@ -153,5 +153,7 @@ blockquote p {
 
 pre {
   font-family: monospace;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
 }
 
