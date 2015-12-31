@@ -151,3 +151,7 @@ blockquote p {
   padding-left: 35px;
 }
 
+pre {
+  font-family: monospace;
+}
+
