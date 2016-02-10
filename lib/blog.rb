@@ -94,6 +94,7 @@ module Blog
 
     if opts[:index] == true
       r = r.gsub(/\s*<\/?blockquote>\s*/, '"')
+      r = r.gsub(/\s*<\/?h3>\s*/, '')
     end
 
     r
