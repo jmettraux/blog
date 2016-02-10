@@ -26,3 +26,6 @@ publish:
 
 .PHONY: posts
 
+
+# TODO: leverage make, don't rewrite each time
+
