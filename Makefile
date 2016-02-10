@@ -16,6 +16,9 @@ atom:
 
 new:
 	bundle exec ruby -Ilib lib/new_post.rb
+write:
+	$(EDITOR) posts/`ls -1 -t posts/ | head -1`
+w: write
 
 publish:
 	rsync -av out/ ~/Dropbox/Public/blog
