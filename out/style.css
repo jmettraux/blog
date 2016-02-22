@@ -160,4 +160,9 @@ pre {
   margin-top: 0.7em;
   margin-bottom: 0.7em;
 }
+code {
+  font-family: monospace;
+  background-color: lightgrey;
+  padding: 0 .3em;
+}
 
