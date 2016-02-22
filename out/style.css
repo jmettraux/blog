@@ -155,14 +155,32 @@ blockquote p {
   padding-left: 35px;
 }
 
-pre {
-  font-family: monospace;
-  margin-top: 0.7em;
-  margin-bottom: 0.7em;
-}
 code {
   font-family: monospace;
+  background: #dfdfdf;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2%;
+  -moz-border-radius: 2%;
+  border-radius: 2%;
+}
+
+pre {
+  font-family: monospace;
+  margin-top: 0.9em;
+  margin-bottom: 1.4em;
+}
+pre > code {
+  font-family: monospace;
   background-color: lightgrey;
-  padding: 0 .3em;
+  padding: .3em .7em;
+  -webkit-border-radius: 2%;
+  -moz-border-radius: 2%;
+  border-radius: 2%;
+}
+
+img.screenshot {
+  -webkit-border-radius: 2%;
+  -moz-border-radius: 2%;
+  border-radius: 2%;
 }
 
