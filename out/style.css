@@ -60,6 +60,9 @@ h3 {
   margin-bottom: .7em;
 }
 em {
+  font-style: italic;
+}
+strong {
   font-weight: bold;
 }
 p {
