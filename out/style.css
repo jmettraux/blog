@@ -59,6 +59,9 @@ h3 {
   font-weight: bold;
   margin-bottom: .7em;
 }
+em {
+  font-weight: bold;
+}
 p {
   margin-bottom: 1em;
   line-height: 1.25em;
