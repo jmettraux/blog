@@ -190,3 +190,14 @@ img.screenshot {
   border-radius: 2%;
 }
 
+#index em {
+  font-style: normal;
+}
+#index strong {
+  font-weight: normal;
+}
+#index code {
+  background-color: white;
+  font-family: inherit;
+}
+
