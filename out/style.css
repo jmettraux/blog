@@ -110,6 +110,7 @@ img.brand {
 }
 .post .links {
   margin-top: 2em;
+  margin-bottom: 2.1em;
 }
 
 .all-post h2.title {
@@ -135,6 +136,7 @@ body.post img.brand {
 
 .foot-links {
   margin-top: 2.1em;
+  margin-bottom: 2.1em;
 }
 
 /* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
