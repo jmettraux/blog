@@ -16,6 +16,7 @@ atom:
 
 new:
 	bundle exec ruby -Ilib lib/new_post.rb
+n: new
 write:
 	$(EDITOR) posts/`ls -1 -t posts/ | head -1`
 w: write
