@@ -24,6 +24,13 @@ w: write
 publish:
 	rsync -av out/ ~/Dropbox/Public/blog
 
+serve:
+	ruby -run -ehttpd out/ -p7000
+s: serve
+browse:
+	open http://127.0.0.1:7000
+b: browse
+
 
 .PHONY: posts
 
