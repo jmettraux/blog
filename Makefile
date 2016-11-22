@@ -27,6 +27,7 @@ publish:
 	# https://savjee.be/2013/02/howto-host-jekyll-blog-on-amazon-s3/
 	s3cmd sync --acl-public out/ s3://lambda.io/
 	s3cmd sync --acl-public --delete-removed out/ s3://lambda.io/
+p: publish
 
 serve:
 	ruby -run -ehttpd out/ -p7000

@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
 <title>${blog.title}</title>
-<link href="https://dl.dropboxusercontent.com/u/76595/blog/atom.xml" rel="self" />
+<link href="http://lambda.io/jmettraux/atom.xml" rel="self" />
 <!--
 <link href="https://dl.dropboxusercontent.com/u/76595/blog/" />
 <link href="https://lambda.io/jmettraux/"/>
