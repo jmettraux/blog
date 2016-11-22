@@ -42,7 +42,9 @@ posts =
 
     content = content.split("\n", 2).last # remove title
 
-    vars['CONTENT'] = Blog.md_render(content.substitute(vars))
+    vars['CONTENT'] =
+      Blog.html_to_atom_xhtml(
+        Blog.md_render(content.substitute(vars)))
 
     # http://edward.oconnor.cx/2007/02/representing-tags-in-atom
 

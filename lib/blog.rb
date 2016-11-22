@@ -23,7 +23,9 @@
 # Made in Japan.
 #++
 
+require 'pp'
 require 'yaml'
+require 'nokogiri'
 require 'redcarpet'
 require 'redcarpet/render_strip'
 
@@ -98,6 +100,23 @@ module Blog
     end
 
     r
+  end
+
+  def self.html_to_atom_xhtml(s)
+
+    doc = Nokogiri::HTML(s)
+
+    doc.css('script').each do |script|
+
+      if target = script['data-lambda-io-target']
+        script.add_next_sibling(
+          "<a href=\"#{target}\">(presentation slides at #{target})</a>")
+      end
+
+      script.remove
+    end
+
+    doc.at_css('body').to_xhtml[6..-8]
   end
 
   def self.load_post(path)
