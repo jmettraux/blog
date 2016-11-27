@@ -3,13 +3,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
 <title>${blog.title}</title>
-<link href="http://jmettraux.lambda.io/atom.xml" rel="self" />
-<!--
-<link href="https://dl.dropboxusercontent.com/u/76595/blog/" />
-<link href="https://lambda.io/jmettraux/"/>
--->
+<link href="http://jmettraux.skepti.ch/atom.xml" rel="self" />
 <updated>${Time.now.strftime('%FT%T%:z')}</updated>
-<id>http://lambda.io/jmettraux/</id>
+<id>http://jmettraux.skepti.ch</id>
 <author>
 <name>John Mettraux</name>
 <email>jmettraux@gmail.com</email>
