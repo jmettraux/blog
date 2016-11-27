@@ -5,7 +5,7 @@
 <title>${blog.title}</title>
 <link href="http://jmettraux.skepti.ch/atom.xml" rel="self" />
 <updated>${Time.now.strftime('%FT%T%:z')}</updated>
-<id>http://jmettraux.skepti.ch</id>
+<id>http://jmettraux.skepti.ch/</id>
 <author>
 <name>John Mettraux</name>
 <email>jmettraux@gmail.com</email>
