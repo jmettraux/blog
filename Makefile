@@ -25,8 +25,9 @@ publish:
 	#rsync -av out/ ~/Dropbox/Public/blog
 	  #
 	# https://savjee.be/2013/02/howto-host-jekyll-blog-on-amazon-s3/
-	s3cmd sync --acl-public out/ s3://lambda.io/
-	s3cmd sync --acl-public --delete-removed out/ s3://lambda.io/
+	#s3cmd sync --acl-public out/ s3://lambda.io/
+	#s3cmd sync --acl-public --delete-removed out/ s3://lambda.io/
+	rsync -azv out/ lin:www/blog/
 p: publish
 
 serve:
