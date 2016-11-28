@@ -2,6 +2,8 @@
 .vimrc
 .viminfo
 
+.todo.md
+
 out/index.html
 out/all.html
 out/copyright.html
