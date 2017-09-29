@@ -37,8 +37,11 @@ browse:
 	open http://127.0.0.1:7000
 b: browse
 
+redate:
+	mv posts/`ls -1 -t posts/ | head -1` posts/`date +%Y%m%d`.md
 
-.PHONY: posts
+
+.PHONY: posts redate serve
 
 
 # TODO: leverage make, don't rewrite each time
