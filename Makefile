@@ -40,8 +40,11 @@ b: browse
 redate:
 	bundle exec ruby -Ilib lib/redate_post.rb posts/`ls -1 -t posts/ | head -1`
 
+backup:
+	cd .. && tar cjvf ~/Dropbox/backup/blog_`date +%Y%m%d_%H%M%S`.tbz blog/
 
-.PHONY: posts redate serve
+
+.PHONY: backup posts publish redate serve
 
 
 # TODO: leverage make, don't rewrite each time

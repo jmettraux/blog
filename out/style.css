@@ -70,6 +70,10 @@ p {
   line-height: 1.25em;
 }
 
+img {
+  width: 100%;
+}
+
 img.brand {
   width: 56px;
   height: 56px;
