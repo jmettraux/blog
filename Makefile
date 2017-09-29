@@ -38,7 +38,7 @@ browse:
 b: browse
 
 redate:
-	mv posts/`ls -1 -t posts/ | head -1` posts/`date +%Y%m%d`.md
+	bundle exec ruby -Ilib lib/redate_post.rb posts/`ls -1 -t posts/ | head -1`
 
 
 .PHONY: posts redate serve

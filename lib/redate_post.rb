@@ -23,21 +23,14 @@
 # Made in Japan.
 #++
 
-n = Time.now
-fn = "posts/#{n.strftime('%Y%m%d')}.md"
+now = Time.now
+path = ARGV[0]
 
-File.open(fn, 'ab') do |f|
-  f.print(%{
----
-date: '#{n.strftime('%FT%T%:z')}'
-tags: [ 'en' ]
----
+content = File.read(path)
+  .sub(/---\ndate: '[^']+'\n/m) { |x|
+    "---\ndate: '#{now.strftime('%FT%T%:z')}'\n" }
 
-## title
-
-Blah blah blah
-  }.strip)
-end
-
-puts ". prepared #{fn}"
+File.open(
+  "posts/#{now.strftime('%Y%m%d')}.md", 'wb'
+) { |f| f.write(content) }
 
