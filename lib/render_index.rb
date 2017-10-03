@@ -39,7 +39,7 @@ posts =
     content = content
       .split("\n", 2).last # remove title
       .split("\n")
-      .reject { |l| l.match(/^#/) }
+      .reject { |l| l.match(/^(#|<)/) }
     content = content[1, 2].join("\n") + "\n&hellip;"
     vars['CONTENT'] = Blog.md_render(content.substitute(vars), index: true)
 
