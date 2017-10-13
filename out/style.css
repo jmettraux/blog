@@ -59,6 +59,10 @@ h3 {
   font-weight: bold;
   margin-bottom: .7em;
 }
+/*h4 {
+  font-size: 110%;
+  margin-bottom: .7em;
+}*/
 em {
   font-style: italic;
 }
@@ -213,5 +217,9 @@ img.screenshot {
 #index code {
   background-color: white;
   font-family: inherit;
+}
+
+iframe.speakerdeck-iframe {
+  margin-bottom: 1.4em !important;
 }
 
