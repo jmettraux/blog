@@ -1,7 +1,8 @@
 
 render: index all posts copyright atom
+c: render
 
-rp: render publish
+#rp: render publish
 
 index:
 	bundle exec ruby -Ilib lib/render_index.rb
