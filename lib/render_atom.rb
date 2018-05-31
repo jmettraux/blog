@@ -32,7 +32,7 @@ require 'blog'
 layout = File.read('layouts/atom-post.xml')
 
 posts =
-  Dir['posts/*.md'].reverse.collect do |path|
+  Dir['posts/*.md'].sort.reverse.collect do |path|
 
     print " #{path}"
 

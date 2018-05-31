@@ -30,7 +30,7 @@ post_layout = File.read('layouts/all-post.html')
 tag_layout = File.read('layouts/index-post-tag.html') # sic
 
 posts =
-  Dir['posts/*.md'].reverse.collect do |path|
+  Dir['posts/*.md'].sort.reverse.collect do |path|
 
     print " #{path}"
 

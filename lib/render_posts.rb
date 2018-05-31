@@ -29,7 +29,7 @@ require 'blog'
 post_layout = File.read('layouts/post.html')
 tag_layout = File.read('layouts/post-tag.html')
 
-Dir['posts/*.md'].each do |path|
+Dir['posts/*.md'].sort.each do |path|
 
   fn = 'out/' + File.basename(path, '.md') + '.html'
 
