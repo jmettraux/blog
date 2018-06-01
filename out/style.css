@@ -150,7 +150,8 @@ body.post img.brand {
 /* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
 blockquote {
   position: relative;
-  margin-top: 2.1em;
+  /*margin-top: 2.1em;*/
+  margin-top: 0;
   padding: 0.5em 0;
   quotes: "\201C""\201D""\2018""\2019";
   line-height: 1.2em;
