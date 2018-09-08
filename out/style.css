@@ -224,3 +224,13 @@ iframe.speakerdeck-iframe {
   margin-bottom: 1.4em !important;
 }
 
+ul {
+  margin-bottom: 1.4em;
+}
+li {
+  list-style-type: disc;
+  list-style-position: outside;
+  margin-left: 1.4em;
+  margin-bottom: 0.14em;
+}
+
