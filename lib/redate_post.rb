@@ -34,3 +34,5 @@ File.open(
   "posts/#{now.strftime('%Y%m%d')}.md", 'wb'
 ) { |f| f.write(content) }
 
+# do the gittery manually
+
