@@ -11,3 +11,7 @@ endfunction " BlogInsertPreCode
 
 nnoremap <silent> <leader>K :call <SID>BlogInsertPreCode()<CR>
 
+
+highlight ColorColumn ctermbg=16
+  " disable > 80 column highlight
+
