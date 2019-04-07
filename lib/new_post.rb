@@ -1,6 +1,5 @@
 
-#--
-# Copyright (c) 2015-2018, John Mettraux, jmettraux@gmail.com
+# Copyright (c) 2015-2019, John Mettraux, jmettraux@gmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +20,6 @@
 # THE SOFTWARE.
 #
 # Made in Japan.
-#++
 
 n = Time.now
 fn = "posts/#{n.strftime('%Y%m%d')}.md"
