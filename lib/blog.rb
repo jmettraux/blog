@@ -132,6 +132,8 @@ module Blog
     vars['id'] = File.basename(path, '.md')
     vars['tags'] ||= []
 
+    content = rework_text(content)
+
     [ vars, content ]
   end
 
@@ -139,6 +141,39 @@ module Blog
 
     (YAML.load(File.read('blog.yaml')) rescue {})
       .merge(o.is_a?(Hash) ? o : YAML.load(o))
+  end
+
+  def self.rework_text(content)
+
+    o = StringIO.new
+    in_code = false
+
+    content.split("\n").each do |line|
+
+      initial_in_code = in_code
+
+      o.write(
+        if in_code
+          if line == '```'
+            in_code = false
+            "</code></pre>"
+          else
+            line
+              .gsub('<', '&lt;').gsub('>', '&gt;')
+              .gsub('_', '&lowbar;')
+              #.gsub('&', '&ampersand;')
+          end
+        elsif line.match(/```([a-z]+)\s*/)
+          in_code = true
+          "\n<pre><code class=\"#{$1}\">"
+        else
+          line
+        end)
+
+        o.write("\n") unless initial_in_code == false && in_code == true
+    end
+
+    o.string
   end
 end
 
