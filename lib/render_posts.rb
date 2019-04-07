@@ -35,6 +35,9 @@ Dir['posts/*.md'].sort.each do |path|
 
     vars, content = Blog.load_post(path)
 
+    content.gsub!(/\n```([a-z]+)\s+/) { |m| p m; "\n<pre><code class=\"#{m[4..-2]}\">" }
+    content.gsub!(/\n```\n/, "\n</code></pre>\n")
+
     vars['CONTENT'] =
       Blog.md_render(content.substitute(vars))
 
