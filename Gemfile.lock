@@ -12,8 +12,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (= 2.7.2)
   nokogiri
   redcarpet
 
 BUNDLED WITH
-   1.16.2
+   2.7.2

@@ -25,6 +25,16 @@ This blog uses:
 [https://validator.w3.org/feed/check.cgi?url=http%3A%2F%2Flambda.io%2Fjmettraux%2Fatom.xml](https://validator.w3.org/feed/check.cgi?url=http%3A%2F%2Flambda.io%2Fjmettraux%2Fatom.xml)
 
 
+## nokogiri
+
+```sh
+$ bundle config build.nokogiri --use-system-libraries
+$ bundle install
+```
+
+See `.bundle/config/`
+
+
 ## License
 
 The blog entries (posts) have all their rights reserved.
