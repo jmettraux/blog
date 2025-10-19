@@ -73,6 +73,9 @@ p {
   margin-bottom: 1em;
   line-height: 1.30em;
 }
+li {
+  line-height: 1.30em;
+}
 
 img {
   width: 100%;
@@ -193,6 +196,7 @@ pre > code {
   -webkit-border-radius: 2%;
   -moz-border-radius: 2%;
   border-radius: 2%;
+  line-height: 1.20em;
 }
 
 pre.listing {
