@@ -1,9 +1,9 @@
 
 <entry>
 <title>${title}</title>
-<link href="http://jmettraux.skepti.ch/${id}.html" />
+<link href="https://${blog.host}/${id}.html" />
 <updated>${date}</updated>
-<id>http://jmettraux.skepti.ch/${id}.html</id>
+<id>https://${blog.host}/${id}.html</id>
 <content type="xhtml">
 <div xmlns="http://www.w3.org/1999/xhtml">
 ${CONTENT}

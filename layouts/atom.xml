@@ -3,9 +3,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
 <title>${blog.title}</title>
-<link href="http://jmettraux.skepti.ch/atom.xml" rel="self" />
+<link href="https://${blog.host}/atom.xml" rel="self" />
 <updated>${Time.now.strftime('%FT%T%:z')}</updated>
-<id>http://jmettraux.skepti.ch/</id>
+<id>https://${blog.host}</id>
 <author>
 <name>John Mettraux</name>
 <email>jmettraux@gmail.com</email>

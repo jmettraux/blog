@@ -10,7 +10,7 @@
 
   <h1>
     <a href="index.html"><img class="brand" src="images/edelweiss.jpg" /></a>
-    blog.skepti.ch
+    ${blog.title}
   </h1>
 
   <p>John Mettraux, programmer</P>
@@ -24,7 +24,9 @@
 
   <p class="links">
     <a href="https://jmettraux.github.io">old blog</a>
+    <!--
     <a href="https://jmettraux.wordpress.com/">older blog</a>
+    -->
     <a href="all.html">all.html</a>
     <a style="display: none;" href="index.html" class="all-tags">all tags</a>
   </p>
@@ -32,7 +34,7 @@
   ${CONTENT}
 
   <p class="foot-links">
-    <a href="https://github.com/jmettraux/blog/">source</a>
+    <a href="${blog.source}">source</a>
     <a href="copyright.html">copyright</a>
   </p>
 </div>

@@ -1,2 +1,6 @@
+
 blog:
+  host: blog.skepti.ch
   title: blog.skepti.ch
+  source: https://github.com/jmettraux/blog/
+
