@@ -29,7 +29,8 @@ publish:
 	#s3cmd sync --acl-public out/ s3://lambda.io/
 	#s3cmd sync --acl-public --delete-removed out/ s3://lambda.io/
 	#rsync -azv out/ lin:www/blog/
-	rsync -azv out/ shooto:/var/www/htdocs/jmettraux.skepti.ch/
+	#rsync -azv out/ shooto:/var/www/htdocs/jmettraux.skepti.ch/
+	rsync -azv out/ jutsu:/var/www/htdocs/blog.skepti.ch/
 p: publish
 
 serve:
