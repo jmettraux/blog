@@ -41,8 +41,10 @@ a:link { color: grey; }
 
 #content {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14pt;
-  width: 800px;
+  /*font-family: "EB Garamond", serif;*/
+  font-style: normal;
+  font-size: 16pt;
+  width: 77%;
   margin: 1em auto;
 }
 h1 {
@@ -176,7 +178,10 @@ blockquote p {
 }
 
 code {
-  font-family: monospace;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12pt;
   background: #dfdfdf;
   padding: 0 0.2em;
   -webkit-border-radius: 2%;
@@ -185,12 +190,19 @@ code {
 }
 
 pre {
-  font-family: monospace;
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12pt;
   margin-top: 0.9em;
   margin-bottom: 1.4em;
 }
 pre > code {
-  font-family: monospace;
+  /*
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  */
   background-color: lightgrey;
   padding: .3em .7em;
   -webkit-border-radius: 2%;
