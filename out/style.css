@@ -43,8 +43,8 @@ a:link { color: grey; }
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   /*font-family: "EB Garamond", serif;*/
   font-style: normal;
-  font-size: 16pt;
-  width: 77%;
+  font-size: 14pt;
+  width: 70%;
   margin: 1em auto;
 }
 h1 {
@@ -167,7 +167,7 @@ blockquote:before {
   left: 0px;
   color: #ccc;
   content: open-quote;
-  font-size: 4em;
+  font-size: 16pt;
 }
 blockquote:after {
   content: no-close-quote;
